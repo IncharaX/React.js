@@ -1,12 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import heroImg from "./assets/hero.png";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [showbtn, setshowbtn] = useState(true)
+  const [count, setCount] = useState(0);
+  const [showbtn, setshowbtn] = useState(true);
+  const [todos, setTodo] = useState([
+    {
+      title: "Hey",
+      desc: "I am a good todo",
+    },
+    {
+      title: "Hey Another todo",
+      desc: "I am a good todo too",
+    },
+    {
+      title: "Hey I am grocery todo",
+      desc: "I am a good todo but I am grocery todo",
+    },
+  ]);
+
+  const Todo = ({ todo }) => {
+    return (
+      <>
+        <div className="todo">{Todo.title}</div>
+        <div className="todo">{Todo.desc}</div>
+      </>
+    );
+  };
 
   return (
     <>
@@ -22,10 +45,16 @@ function App() {
             Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
           </p>
         </div>
-        {showbtn?<button>showbtn is true</button>:<button>showbtn is false</button>}
-        <button
-          className="counter"
-          onClick={() => setshowbtn(!showbtn)}>
+        {showbtn ? (
+          <button>showbtn is true</button>
+        ) : (
+          <button>showbtn is false</button>
+        )}
+        {todos.map((Todo) => {
+          return <Todo key={todo.title} todo={todo} />;
+        })}
+
+        <button className="counter" onClick={() => setshowbtn(!showbtn)}>
           Toggle showbtn
         </button>
       </section>
@@ -116,7 +145,7 @@ function App() {
       <div className="ticks"></div>
       <section id="spacer"></section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
