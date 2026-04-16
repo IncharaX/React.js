@@ -4,13 +4,15 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import Navbar from './Components/Navbar'
+import { counterContext } from '../context/context'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-    <Navbar/>
+    <counterContext.Provider value={{count, setCount}}>
+    <Navbar count={count}/>
       <section id="center">
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
@@ -116,6 +118,7 @@ function App() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+      </counterContext.Provider>
     </>
   )
 }
