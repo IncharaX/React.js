@@ -10,10 +10,7 @@ function App() {
   const [count2, setCount2] = useState(0)
   const [adjective, setAdjective] = useState("good")
 
-  // const getAdjective = () => {
-  //   return "another" + count
-  // }
-
+  
   const getAdjective = useCallback(() => {
     return "another" + count
   },[count] )
