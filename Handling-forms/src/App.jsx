@@ -19,7 +19,6 @@ function App() {
   }
 
   const onSubmit = async (data) => {
-    // await delay(2) // simulating network delay
     let r = await fetch("http://localhost:3000/", {method: "POST",  headers: {
       "Content-Type": "application/json", 
     }, body: JSON.stringify(data)})
@@ -41,7 +40,6 @@ function App() {
           <input disabled={isSubmitting}  type="submit" value="Submit" />
           {errors.myform && <div className='red'>{errors.myform.message}</div>}
           {errors.blocked && <div className='red'>{errors.blocked.message}</div>}
-
         </form>
       </div>
     </>
